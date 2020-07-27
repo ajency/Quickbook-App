@@ -1,6 +1,7 @@
 const OAuthClient = require('intuit-oauth')
 const fs = require('fs');
 var QuickBooks = require('node-quickbooks')
+const companyQuickbookAccount = require('./models/CompanyQuickBookAccount')
 
 var consumerKey = 'ABxZAeiIyXibbaWMm6D0PRxQhh7UA0hhNjs7mB0IlLTYO6vbXO';
 var consumerSecret = 'AKz64F6gVQ6UL2Y8Lxhr851Dc5TBKQdc1OmauxlW';
@@ -37,10 +38,13 @@ const oauth2redirect = (request,response) => {
         console.log(id);
         console.log('realm Id: '+request.query.realmId);
         console.log('Code: '+request.query.code);
-        fs.writeFile(TOKEN_PATH, JSON.stringify(authResponse.getJson()),(error) => {
+
+
+
+       /*  fs.writeFile(TOKEN_PATH, JSON.stringify(authResponse.getJson()),(error) => {
             if (error) return console.error(error);
             console.log('Token stored to', TOKEN_PATH);
-        })
+        }) */
 
         response.status(200).json(true);
     })

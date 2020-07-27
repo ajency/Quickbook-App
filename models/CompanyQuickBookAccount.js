@@ -3,37 +3,39 @@ const Sequelize = require('sequelize');
 const sequelize = require('../DbConnect').sequelize
 
 const CompanyQuickbookAccount = sequelize.define('company_quickbook_account', {
-    realm_id: {
+    realmId: {
      type: Sequelize.BIGINT,
      primaryKey: true,
-     allowNull:false
+     allowNull:false,
+     field: 'realm_id'
     },
-    company_id: {
+    companyId: {
       type: Sequelize.INTEGER,
-      allowNull:false
+      allowNull:false,
+      field: 'company_id'
     },
-    access_token: {
+    accessToken: {
       type: Sequelize.TEXT,
-      allowNull:false
+      allowNull:false,
+      field: 'access_token'
     },
-    refresh_token: {
+    refreshToken: {
       type: Sequelize.TEXT,
-      allowNull:false
+      allowNull:false,
+      field: 'refresh_token'
     },
-    created_date:{
-      type: Sequelize.DATEONLY
+    createdDate:{
+      type: Sequelize.DATEONLY,
+      field: 'created_date'
     }, 
-    updated_date:{
-      type: Sequelize.DATEONLY
+    updatedDate:{
+      type: Sequelize.DATEONLY,
+      field: 'updated_date'
   }
   },{
     freezeTableName: true
    });
-
-module.exports ={
-    CompanyQuickbookAccount
-  }
-
+   
   async const getCompanyQuickbookAccountById = (id) => {
     const companyQuickbookAccount = await CompanyQuickbookAccount.findByPk(id);
     if (companyQuickbookAccount === null) {
@@ -45,16 +47,15 @@ module.exports ={
   }
 
   const createCompanyQuickbookAccount = (companyQuickbookAccount) => {
-    CompanyQuickbookAccount.create({
-
-    }, {raw: true}).then(function(companys) {
-        console.log(companys);
-        response.status(200).json(companys);
+    CompanyQuickbookAccount.create(companyQuickbookAccount, {raw: true}).then(function(companyQBAccount) {
+        console.log(companyQBAccount);
+       return companyQBAccount;
       })
   }
 
 
   module.exports ={
     getCompanyQuickbookAccountById,
+    createCompanyQuickbookAccount,
     CompanyQuickbookAccount
   }
