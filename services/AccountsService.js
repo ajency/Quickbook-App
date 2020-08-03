@@ -1,4 +1,4 @@
-const accountsDao =  require('./AccountsDao')
+const accountsDao =  require('../AccountsDao')
 
 const findAllAccounts = (companyId) => {
     return new Promise((resolve,reject) => {

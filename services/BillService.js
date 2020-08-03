@@ -2,7 +2,8 @@ const billDao =  require('./BillDao')
 const accountsDao = require('./AccountsDao')
 const vendorDao = require('./VendorDao')
 
- const createBill = (companyId,transaction) => {
+
+ const createBill = (companyId,transaction,sessionId) => {
 
     return new Promise((resolve,reject) => {
         var vendorId = null;
@@ -17,7 +18,7 @@ const vendorDao = require('./VendorDao')
             Line:[
                 {
                     DetailType: transaction.line[0].detailType,
-                    Amount: transaction.line[0].accountRef.amount,
+                    Amount: transaction.line[0].amount,
                     Id:1,
                     AccountBasedExpenseLineDetail:{
                         AccountRef:{

@@ -4,7 +4,7 @@ const qBAuth = require('./QBAuth')
 const api = require('./Api')
 const vendorService = require('./VendorService')
 const vendorDao = require('./VendorDao')
-const accountsService = require('./AccountsService')
+const accountsService = require('./services/AccountsService')
 const itemService = require('./ItemsService')
 const sqsConsumer = require('./SQSReceivemessage')
 const dbConnect = require('./DbConnect')
@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
-    sqsConsumer.invokeConsmerOnStart();
+    //sqsConsumer.invokeConsmerOnStart();
     dbConnect.ConnectToDb();
     
   })
@@ -42,3 +42,5 @@ app.listen(port, () => {
   app.get('/getItems',itemService.test)
 
   app.get('/getAllCompanies',company.getAllCompanies)
+
+  app.post('/addInvoice',api.addInvoice)

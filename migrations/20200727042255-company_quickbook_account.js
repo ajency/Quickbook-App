@@ -21,10 +21,10 @@ module.exports = {
         allowNull:false
       },
       created_date:{
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE
       }, 
       updated_date:{
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE
     }
     });
   },
