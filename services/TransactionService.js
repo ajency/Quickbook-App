@@ -10,19 +10,19 @@ const processSQSMessage = (message) =>{
         if(obj.transactionType.toUpperCase() === "BILL" )
         {
             importHistoryTracker.updateHistory({ 
-                consumed : data.length, // error please fix data variable
+                consumed : obj.data.length, 
                 overallStatus : statusEnum.CONSUMED
              },obj.sessionId);
              
              var savedCount = 0;
-             Promise.all(data.forEach(function(dataObject) {
+             Promise.all(obj.data.map(function(dataObject) {
                 billService.createBill(obj.companyId, dataObject, obj.sessionId).then((bill) => {
                     console.log(bill)
                     savedCount++;
                   })
              })).then(function(resultsArr){
                 importHistoryTracker.updateHistory({ 
-                    saved : data.length,
+                    saved : savedCount,
                     overallStatus : statusEnum.SAVED
                  },obj.sessionId);
              });

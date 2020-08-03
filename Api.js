@@ -19,7 +19,7 @@ const addBill = (request,response) => {
              validation.ValidateData(companyId,request.body.transactionType,request.body.accountingDriver,request.body.transactionData).then((status) => {
                 console.log(status);
             if(status.getStatusCode() == 401)
-                response.status(401).json(status);
+                response.status(200).json(status);
             else
             {
                 var sessionIdentity = uuid();
@@ -36,18 +36,23 @@ const addBill = (request,response) => {
                 }
             
                 importHistoryTracker.createHistory(importHistory);
-            
-                billService.createBill(companyId,request.body.transactionData[0],sessionIdentity).then((bill) => {
-                    response.status(200).json(bill);
+
+                let sqsTopic = new SQSTopic();
+                sqsTopic.setData(request.body.transactionData);
+                sqsTopic.setSessionId(uuid());
+                sqsTopic.setTransactionType(request.body.transactionType);
+                sqsTopic.setCompanyId(companyId);
+                sqsSendMessage.publishToSQS(sqsTopic).then((message) =>{
+                response.status(200).json(message);
                 })
-        
             }
     
             })
              
            
         }
-        response.status(200).json(status);
+        else
+            response.status(200).json(status);
     })
     
 /* 
