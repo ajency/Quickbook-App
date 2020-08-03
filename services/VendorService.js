@@ -1,4 +1,4 @@
-const vendorDao =  require('./VendorDao')
+const vendorDao =  require('../dao/VendorDao')
 
 const findAllVendors = (companyId) => {
   return new Promise((resolve,reject) => {

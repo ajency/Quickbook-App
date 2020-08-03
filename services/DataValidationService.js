@@ -1,4 +1,4 @@
-const Response = require('./Response')
+const Response = require('../Response')
 const vendorService =  require('./VendorService')
 const accountService = require('./AccountsService')
 

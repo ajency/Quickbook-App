@@ -1,4 +1,4 @@
-const qBAuth = require('./QBAuth')
+const qBAuth = require('../QBAuth')
 
 const save = (companyId,data) => {
     return new Promise((resolve,reject) => {

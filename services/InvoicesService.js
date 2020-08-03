@@ -1,7 +1,7 @@
-const invoiceDao =  require('./InvoicesDao')
-const customerDao = require('./CustomerDao')
-const itemsDao = require('./ItemsDao')
-const batchDao = require('./BatchDao')
+const invoiceDao =  require('../dao/InvoicesDao')
+const customerDao = require('../dao/CustomerDao')
+const itemsDao = require('../dao/ItemsDao')
+const batchDao = require('../dao/BatchDao')
 
 
  const createInvoice = (companyId,transaction,sessionId) => {

@@ -1,4 +1,4 @@
-const itemsDao =  require('./ItemsDao')
+const itemsDao =  require('../dao/ItemsDao')
 
 const findAllItems = (companyId) => {
     return new Promise((resolve,reject) => {

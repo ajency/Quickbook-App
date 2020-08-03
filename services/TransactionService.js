@@ -1,6 +1,6 @@
 const billService =  require('./BillService')
-const importHistoryTracker = require('./models/ImportHistoryTracker')
-const statusEnum = require('./Enums').statusEnum
+const importHistoryTracker = require('../models/ImportHistoryTracker')
+const statusEnum = require('../enums/Enums').statusEnum
 
 const processSQSMessage = (message) =>{
 

@@ -1,6 +1,6 @@
-const billDao =  require('./BillDao')
-const accountsDao = require('./AccountsDao')
-const vendorDao = require('./VendorDao')
+const billDao =  require('../dao/BillDao')
+const accountsDao = require('../dao/AccountsDao')
+const vendorDao = require('../dao/VendorDao')
 
 
  const createBill = (companyId,transaction,sessionId) => {
