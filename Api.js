@@ -20,7 +20,7 @@ const addBill = (request,response) => {
                 console.log(status);
             if(status.getStatusCode() == 401)
                 response.status(401).json(status);
-         /*   else
+            else
             {
                 var sessionIdentity = uuid();
     
@@ -42,7 +42,7 @@ const addBill = (request,response) => {
                 })
         
             }
-    */
+    
             })
              
            
